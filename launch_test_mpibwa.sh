@@ -26,11 +26,11 @@ unset __conda_setup
 
 conda activate nextflow_21.04.0
 
-export NXF_MODE=ignite
+## export NXF_MODE=ignite ### this doesn't make any difference in reality
 export NXF_CLUSTER_SEED=$(shuf -i 0-16777216 -n 1)
 srun nextflow run \
 -c /home/lescai/tests/nextflow/mpi/eos_mpi.conf \
 -profile singularity \
 /home/lescai/tests/nextflow/mpi/test_mpibwa.nf \
--process.executor ignite \
+-process.executor ignite \ ### this makes all the difference - with this it works
 -with-mpi
