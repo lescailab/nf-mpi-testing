@@ -23,4 +23,32 @@ test_mpibwa.nf \
 
 ## Use cases
 
+
+### FenicsProject
+
+A solution is described [here](https://bitbucket.org/fenics-project/docker/src/master/dockerfiles/build-singularity-images.sh) to build a Singularity image.
+
+However, we have tested first a conversion from Docker to Singularity in an environment with sudo rights, simply by:
+
+```
+singularity pull docker://docker pull quay.io/fenicsproject:stable
+```
+
+Then we test if it works, by using one of the demo scripts packed inside the image
+
+```
+singularity exec fenicsproject_2019.1.0.sif cp /usr/local/share/dolfin/demo/python/documented/poisson/demo_poisson.py .
+```
+
+We have modified the script in order to remove connection to display.
+Then we execute:
+
+```
+singularity exec fenicsproject_2019.1.0.sif mpirun -np 12 python3 demo_poisson_mod.py
+```
+
+And it seems to work by broadcasting 12 processes, writing 12 .vtu files, one .pvtu and one output file ```poisson.pvd```.
+
+
+
 To be continued...
