@@ -2,7 +2,7 @@
 
 ## Have your environment ready
 
-You can get detailed information about conda environments on EOS here, and how to run Nextflow on EOS [here](https://lescailab.unipv.it/guides/eos_guide/use_nextflow.html).
+You can get detailed information about conda environments on EOS [here](https://lescailab.unipv.it/guides/eos_guide/use_software.html), and how to run Nextflow on EOS [here](https://lescailab.unipv.it/guides/eos_guide/use_nextflow.html).
 
 In short:
 
