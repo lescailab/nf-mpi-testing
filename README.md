@@ -21,6 +21,17 @@ test_mpibwa.nf \
 -with-mpi
 ```
 
+After closer investigation though, and thanks to clarification by developers, Nextflow uses MPI solely to launch its tasks (i.e. to distribute the workload of the processes/tasks), and in no way to execute with mpirun what is coded in the script directive.
+
+We can therefore combine mpi and nextflow in the following way:
+
+- use nextflow to pipeline the tasks, as it's supposed to
+- use nextflow to handle input / outputs
+- use mpirun inside the scripts, in order to multithread tools that use threading via mpi only
+- use nextflow to request the appropriate resources to do that, with the limitations of the tool
+
+
+
 ## Use cases
 
 
@@ -50,5 +61,16 @@ singularity exec fenicsproject_2019.1.0.sif mpirun -np 12 python3 demo_poisson_m
 And it seems to work by broadcasting 12 processes, writing 12 .vtu files, one .pvtu and one output file ```poisson.pvd```.
 
 
+An example of a Nextflow code to do this would use:
 
-To be continued...
+```
+ cpus = 12
+ memory = '16 GB'
+ time = '1d'
+```
+
+and then in the script directive:
+
+```
+mpirun -np 12 python3 ${pyfile}
+```

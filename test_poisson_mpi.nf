@@ -11,6 +11,10 @@ process POISSON {
   tag "fenics on ${pyfile}"
   container "/home/lescai/tests/nextflow/mpi/fenicsproject_2019.1.0.sif"
 
+  cpus = 12
+  memory = '16 GB'
+  time = '1d'
+
   publishDir "${params.outdir}",
              mode: params.publish_dir_mode
 
@@ -23,7 +27,7 @@ process POISSON {
 
   script:
   """
-  python3 ${pyfile}
+  mpirun -np 12 python3 ${pyfile}
   """
 }
 
