@@ -1,0 +1,26 @@
+# Temporary file with description of test cases for FEniCS study
+
+1) Cook.py
+
+This tests solves the 'Cook membrane' benchamrk with the FEniCS library. Its usage considers the following fields:
+
+python Cook.py REFINEMENTS DEGREE METHOD
+
+where:
+
+- REFINEMENTS: The number of elements per side is multiplied by this factor
+- DEGREE: Finite element degree to be used
+- METHOD: One of Newton|Newton-inexact|BFGS|BFGS-inexact
+
+It exports the solution to the 'images' folder.
+
+2) Mechanics.py
+
+Solve a simplified cardiac mechanics problem. Its usage is similar to the previous tests:
+
+python Mechanics.py DEGREE METHOD
+
+- DEGREE: Finite element degree to be used
+- METHOD: One of 'Newton|BFGS'
+
+It exports the solution to the 'images' folder.
