@@ -11,6 +11,7 @@ assert len(argv) == 3, "Must give two arguments: FEM degree and method (Newton|B
 
 degree = int(argv[1])
 method = argv[2]
+stress = float(argv[3])  # 5e3
 parameters["form_compiler"]["optimize"] = True
 parameters["form_compiler"]["cpp_optimize"] = True
 
@@ -25,7 +26,7 @@ robinMarkers = [ENDOCARD, BASE, EPICARD]
 
 # Problem setting
 Markers = MarkersSolid(markers, neumannMarkers, robinMarkers)
-PhysicalParams = PhysicalParametersSolid(dt=1e-2, t0=0.0, sim_time=5e-2, ys_degree=degree, AS=5e3)
+PhysicalParams = PhysicalParametersSolid(dt=1e-2, t0=0.0, sim_time=0.2, ys_degree=degree, AS=stress)
 OutputParams = OutputParameters(name="result", verbose=True, export_solutions=export)
 ts = Constant((0, 0, 0))
 

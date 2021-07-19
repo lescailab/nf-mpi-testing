@@ -18,9 +18,10 @@ It exports the solution to the 'images' folder.
 
 Solve a simplified cardiac mechanics problem. Its usage is similar to the previous tests:
 
-python Mechanics.py DEGREE METHOD
+python Mechanics.py DEGREE METHOD STRESS
 
 - DEGREE: Finite element degree to be used
 - METHOD: One of 'Newton|BFGS'
+- STRESS: Contraction scaling parameters. 
 
 It exports the solution to the 'images' folder.

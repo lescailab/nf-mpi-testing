@@ -1,0 +1,11 @@
+Cook.py
+
+DEGREE: 1 2
+N: for DEGREE==1: 4 8 12 16 20 24, for DEGREE==2: 2 4 6 8 10 12
+METHODS: BFGS BFGS-inexact Newton Newton-inexact
+
+Mechanics.py
+
+DEGREE: 1 2
+METHOD: Newton BFGS
+STRESS: 1e3 5e3 1e4 5e4
